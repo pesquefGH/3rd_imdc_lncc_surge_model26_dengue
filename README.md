@@ -153,7 +153,7 @@ We respected the cutoff date of EW 25 year for each validation. In the temporal 
 
 
 6. Predictive Uncertainty How are your prediction intervals computed?
-We have carried out a Monte Carlo simulation with 10000 runs, for each state. Out of the 10000 forecast realizations, for a given time instant, we calculate the specified percentiles (via prctile.m), to produce the specified prediction intervals. 
+We have carried out a Monte Carlo simulation with 10000 runs, for each state. Out of the 10000 forecast realizations, for a given time instant, we calculate the specified percentiles (via prctile.m), to produce the specified prediction intervals.    
 
 
 8. References
