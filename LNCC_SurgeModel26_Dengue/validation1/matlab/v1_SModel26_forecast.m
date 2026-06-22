@@ -22,7 +22,9 @@
 % 5) Provide a 'Validation 1' Forecast based on the model of the average surge and
 % a simple statistical analysis of the set of gains.  
 
-% UF='SP';
+
+SUNDAYS = readtable('sunday_dates.csv');  % reads CSV with Sunday dates
+S_dates=SUNDAYS{:,1};   % Sunday dates format YYYY-MM-DD
 
 M = readtable(['IMDC2026_AggregatedData_',UF,'.csv']); % reads aggregated
 % data from the chosen state, from EW 1 of 2010 to EW 52 of 2025
@@ -140,14 +142,13 @@ upper_95 = PP(9,:)'; % 97.5% percentile
 indf_ini=665; % time index of the EW 41 2022
 indf_end=716; % time index of the EW 40 2023
 
-epiweek=[(202241:202252)';(202301:202340)'];  % epidemic weeks to be forecast 
+date=S_dates(indf_ini:indf_end);  % epidemic weeks to be forecast 
+
 cases=dcases_orig(indf_ini:indf_end);  % known cases 
 
 state_code=M{1,2}*ones(size(pred));  % state code vector
 
-%T = table(epiweek,pred,lower_95,upper_95,lower_90,upper_90,lower_80,upper_80,lower_50,upper_50,state_code);
-T = table(epiweek,lower_95,lower_90,lower_80,lower_50,pred,upper_50,upper_80,upper_90,upper_95,state_code);
-
+T = table(date,pred,lower_50,upper_50,lower_80,upper_80,lower_90,upper_90,lower_95,upper_95);
 
 writetable(T,['..\spreadsheets\v1_SModel26_',UF,'.csv'],'Delimiter',',')
 
