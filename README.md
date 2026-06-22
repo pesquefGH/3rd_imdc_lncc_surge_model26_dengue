@@ -84,6 +84,7 @@ Then, we obtain a gain (g), so that g times the modeled incidence curve matches 
 
 
 CODE (example for validation 1) : 
+
 dcases=dcases(1:ind_EW25_2022);  % crops time-series at EW 25 of 2022 (including)
 
 % lowpass filtering
