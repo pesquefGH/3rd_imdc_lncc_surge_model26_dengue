@@ -144,10 +144,20 @@ upper_80 = PP(7,:)'; % 90% percentile
 upper_90 = PP(8,:)'; % 95% percentile 
 upper_95 = PP(9,:)'; % 97.5% percentile 
 
-indf_ini=665+52+52+52; % time index of the EW 41 2025
-indf_end=716+52+52+52; % time index of the EW 40 2026
+lower_95(end+1)  = lower_95(end);  % replicates last value 
+lower_90(end+1)  = lower_90(end);  % replicates last value 
+lower_80(end+1)  = lower_80(end);  % replicates last value 
+lower_50(end+1)  = lower_50(end);  % replicates last value 
+pred(end+1)  = pred(end);  % replicates last value 
+upper_50(end+1)  = upper_50(end);  % replicates last value 
+upper_80(end+1)  = upper_80(end);  % replicates last value 
+upper_90(end+1)  = upper_90(end);  % replicates last value 
+upper_95(end+1)  = upper_95(end);  % replicates last value 
 
-date=S_dates(indf_ini:indf_end);  % epidemic weeks to be forecast  
+indf_ini=665+52+52+52; % time index of the EW 41 2025
+indf_end=716+52+52+52+1; % time index of the EW 40 2026 
+
+date=S_dates(823:875);  % Sunday days for validation 4 (53 EWs) 
 
 cases=dcases_orig(indf_ini:end);  % known cases 
 
